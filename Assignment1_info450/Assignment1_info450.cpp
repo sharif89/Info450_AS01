@@ -59,7 +59,7 @@ int main()
 
 
 
-				cout << "Your Deposit is: " << fixed << setprecision(2) << value << "\n" << endl;
+				cout << "Your Deposit is: " << fixed << setprecision(2) <<'$' << value << "\n" << endl;
 
 				break;
 
@@ -78,7 +78,7 @@ int main()
 
 				numW++;
 
-				cout << "Your Withdrawal is: " << fixed << setprecision(2) << value << "\n" << endl;
+				cout << "Your Withdrawal is: " << fixed << setprecision(2) << '$' << value << "\n" << endl;
 
 				break;
 
@@ -97,7 +97,7 @@ int main()
 				
 				numC++;
 
-				cout << "Your Check is for: " << fixed << setprecision(2) << value << "\n" << endl;
+				cout << "Your Check is for: " << fixed << setprecision(2) << '$' << value << "\n" << endl;
 
 				
 				break;
