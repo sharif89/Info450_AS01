@@ -10,27 +10,31 @@ int main()
 
 
 {
-	double checkBalance(double curBalance);
+	void BankingProgram();
 	{
-		double beginningBalance=0;
-		double endingBalance=0;
-		double Deposit=0;
-		double Withdrawal=0;
-		double Checks=0;
-		double totalDeposit=0;
-		double totalWithdrawal=0;
-		double totalChecks=0;
+		double beginningBalance = 0;
+		double value = 0;
+		double totalDeposit = 0;
+		double totalWithdrawal = 0;
+		double totalChecks = 0;
 		double curBalance = 0;
+		double DArray[50];
+		double WArray[50];
+		double CArray[50];
+		int numD = 0;
+		int numW = 0;
+		int numC = 0;
+		int i = 0;
 		int Amount = 0;
 		char answer = ('D', 'W', 'C', 'Q');
 		bool notDone = true;
 
-		
+
 		cout << "Welcome to Banking Program, Please Enter Your Balance:" << endl;
 		cin >> curBalance;
 		beginningBalance = curBalance;
-		
-		
+
+
 		while (notDone) {
 
 			cout << "Enter D for Deposit, W for Withdrawal, C for Checks, or Q for Quit" << endl;
@@ -39,19 +43,23 @@ int main()
 			switch (toupper(answer))
 			{
 			case 'D':
-				
+
 
 				cout << "How much do you want to deposit? " << endl;
 
-				cin >> Deposit;
+				cin >> value;
+				
+				curBalance = curBalance + value;
 
-				curBalance += Deposit;
+				totalDeposit += value;
 
-				totalDeposit += Deposit;
+				DArray[numD] = value;
 
-			
+				numD++;
 
-				cout << "Your Deposit is: " << fixed << setprecision(2) << Deposit << "\n" << endl;
+
+
+				cout << "Your Deposit is: " << fixed << setprecision(2) << value << "\n" << endl;
 
 				break;
 
@@ -60,43 +68,75 @@ int main()
 
 				cout << "How much do you want to withdraw? " << endl;
 
-				cin >> Withdrawal;
+				cin >> value;
 
-				curBalance -= Withdrawal;
+				curBalance = curBalance - value;
+				
+				totalWithdrawal += value;
 
-				totalWithdrawal += Withdrawal;
+				WArray[numW] = value;
 
-				cout << "Your Withdrawal is: " << fixed << setprecision(2) << Withdrawal << "\n" << endl;
+				numW++;
+
+				cout << "Your Withdrawal is: " << fixed << setprecision(2) << value << "\n" << endl;
 
 				break;
 
 
 			case 'C':
-				
+
 				cout << "Enter Amount of Check: " << endl;
 
-				cin >> Checks;
+				cin >> value;
 
-				curBalance -= Checks;
+				curBalance = curBalance - value;
 
-				cout << "Your Check is for: " << fixed << setprecision(2) << Checks << "\n" << endl;
+				totalChecks += value;
 
-				totalChecks += Checks;
+				CArray[numC] = value;
+				
+				numC++;
+
+				cout << "Your Check is for: " << fixed << setprecision(2) << value << "\n" << endl;
+
+				
 				break;
 
 			case 'Q':
-
-				endingBalance = beginningBalance + totalDeposit - totalWithdrawal - totalChecks;
-
-				cout << "Transaction Summary:" << endl;
-				cout << "------------------------------" << "\n" << endl;
-				cout << "Beginning Balance:  " << fixed << setprecision(2) << "$" << beginningBalance << "\n" << endl;
-				cout << "Ending Balance:  " << fixed << setprecision(2) << "$" << endingBalance << "\n" << endl;
-				cout << "------------------------------" << "\n" << endl;
-				cout << "Total Deposits:  " << fixed << setprecision(2) << "$" << totalDeposit << "\n"<< endl;
-				cout << "Total Withdrawals:  " << fixed << setprecision(2) << "$" << totalWithdrawal << "\n" << endl;
-				cout << "Total Checks:  " << fixed << setprecision(2) << "$"<< totalChecks << "\n" << endl;
 				
+				cout << "Transaction Summary:" << "\n"<< endl << endl;
+				cout << "Beginning Balance: " << fixed << setprecision(2) << '$' << beginningBalance << endl << endl;
+				cout << "Deposits:" << endl;
+				for (i = 0; i < numD; i++)
+				{
+					cout << setw(27) << right<< fixed << setprecision(2) <<'$'<< DArray[i] << endl;
+				}
+				cout << "---------------" << endl << endl;
+				cout << "Total Deposit:" << setw(13) << right << fixed << setprecision(2) << '$' << totalDeposit << "\n"<< endl;
+				
+
+
+				cout << "Withdrawals:" << endl;
+				for (i = 0; i < numW; i++)
+				{
+				cout << setw(27) << right << fixed << setprecision(2) << '$'<< WArray[i] << endl;
+				}
+				cout << "---------------" << endl << endl;
+				cout << "Total Withdrawal:" << setw(10) << right << fixed << setprecision(2) << '$' << totalWithdrawal << "\n" << endl;
+				
+				
+				
+				cout << "Checks:" << endl;
+				for (i = 0; i < numC; i++)
+				{
+					cout << setw(27) << right << fixed << setprecision(2) << '$'<< CArray[i] << endl;
+				}
+				cout << "---------------" << endl << endl;
+				cout << "Total Checks:" <<setw(14) << right<< fixed << setprecision(2) << '$' << totalChecks << "\n" << endl << endl;
+				
+				
+				cout << "---------------" << endl << endl;
+				cout << "Ending Balance:" << setw(12) << right << fixed << setprecision(2) << '$' << curBalance << endl << endl;
 				
 				
 				exit(0);
@@ -108,15 +148,11 @@ int main()
 
 				break;
 
-
-
-
-
-
-
-
-
 			}
 		}
-	}
+
+
+		
+	
+}
 }
